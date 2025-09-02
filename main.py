@@ -4,8 +4,9 @@ from peft import LoraConfig, get_peft_model
 import bitsandbytes as bnb
 from ece_regularization import ECEConfig, ECERegularizer
 from ece_trainer import ECETrainer
+from ece_callback import SpectrumLoggingCallback
 
-model_name = "meta-llama/Llama-2-7b-hf"
+model_name = "meta-llama/Llama-2-13b-hf"
 
 # Load in 8-bit
 model = AutoModelForCausalLM.from_pretrained(
@@ -70,6 +71,14 @@ trainer = ECETrainer(
     optimizers=(optimizer, None),   # use our custom optimizer
     ece=ece,
 )
+
+# Add callback
+spectrum_cb = SpectrumLoggingCallback(
+    log_every=200,  # log every 200 steps
+    cfg=ECEConfig(lambda_ece=0.05, mode="both"),
+    logger="wandb"
+)
+trainer.add_callback(spectrum_cb)
 
 # Train
 trainer.train()
