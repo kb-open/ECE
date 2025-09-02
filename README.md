@@ -1,2 +1,2 @@
-# ece
-Implementation for Entropy-Constrained Embeddings for Safe and Reliable Enterprise LLMs
+# ECE
+Implementation for Entropy-Constrained Embeddings (ECE) for Safe and Reliable Enterprise LLMs
