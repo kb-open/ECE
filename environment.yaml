@@ -1,0 +1,28 @@
+name: ece-llm
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  # Core
+  - python=3.10
+  - pytorch=2.1
+  - torchvision=0.16
+  - pytorch-cuda=12.1  # for GPU acceleration, change if needed
+
+  # HuggingFace ecosystem
+  - transformers>=4.40.0
+  - tokenizers>=0.19.0
+  - datasets>=2.19.0
+  - accelerate>=0.29.0
+
+  # Model compression / fine-tuning
+  - pip
+  - pip:
+      - bitsandbytes>=0.43.0
+      - peft>=0.10.0
+
+      # Utilities
+      - einops>=0.7.0
+      - tqdm>=4.66.0
+      - wandb>=0.16.0

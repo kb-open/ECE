@@ -1,0 +1,18 @@
+# Core deep learning
+torch>=2.1.0
+torchvision>=0.16.0
+
+# For HuggingFace model integration
+transformers>=4.40.0
+tokenizers>=0.19.0
+
+# Data loading / preprocessing
+datasets>=2.19.0
+
+# Optional: training utilities
+accelerate>=0.29.0
+einops>=0.7.0
+
+# Logging / tracking (optional, but recommended)
+tqdm>=4.66.0
+wandb>=0.16.0
